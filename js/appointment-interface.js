@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('#doctor-form').submit(function(event) {
     event.preventDefault();
     var symptom = $('#symptom').val();
-    //DoctorList.apiCall(symptom);
+    newDoctorList.getDoctors(symptom);
 
   });
 

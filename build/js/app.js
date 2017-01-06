@@ -2,16 +2,16 @@
 exports.apiKey = "6e11e04e9beaed3cfd208be03b05722a";
 
 },{}],2:[function(require,module,exports){
-var apiKey = require('./../.env');
+var apiKey = require('./../.env').apiKey;
 
 function DoctorList()
 {
 
 }
 
-DoctorList.prototype.apiCall = function (symptom) {
-  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ symptom +'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey)
-   .then(function(result) {
+DoctorList.prototype.getDoctors = function (symptom) {
+  console.log("hello");
+  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ symptom +'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey).then(function(result) {
       console.log(result);
     })
    .fail(function(error){
@@ -34,7 +34,7 @@ $(document).ready(function() {
   $('#doctor-form').submit(function(event) {
     event.preventDefault();
     var symptom = $('#symptom').val();
-    //DoctorList.apiCall(symptom);
+    newDoctorList.getDoctors(symptom);
 
   });
 
