@@ -1,3 +1,35 @@
 body {
-  
+  background-color: darkgrey;
+}
+
+.doctor{
+  margin-left: 7%;
+  margin-right: 7%;
+  display: flex;
+  background-color: white;
+  border: 2px solid black;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.doctorinfo {
+  width: 100%;
+}
+.doctor-name{
+  flex: 1;
+  text-align: center;
+  height: 10%;
+}
+.doctor-bio {
+
+  flex: 1;
+  text-align: left;
+  margin: 15px;
+
+
+}
+.doctor-image {
+  border: 2px solid black;
+  width: 127px;
+  height: 110px;
+  margin: 10px;
 }

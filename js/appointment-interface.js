@@ -30,7 +30,10 @@ var displayDoctors = function(doctors)
     console.log(doctors[i].profile);
 
     $('.doctor:nth-child(' + (i + 1) + ')').append("<img class ='doctor-image' src='"+image+"'>");
-    $('.doctor:nth-child(' + (i + 1) + ')').append("<div class ='doctor-name'>" + firstName + " " + lastName + ", " + title + "</div>");
-    $('.doctor:nth-child(' + (i + 1) + ')').append("<div class ='doctor-bio'>" + bio + "</div>");
+
+    $('.doctor:nth-child(' + (i + 1) + ')').append("<div class ='doctorinfo'></div>");
+
+    $('.doctor:nth-child(' + (i + 1) + ') .doctorinfo').append("<div class ='doctor-name'>" + "<strong>" + firstName + " " + lastName + ", " + title + "</strong>" + "</div>");
+    $('.doctor:nth-child(' + (i + 1) + ') .doctorinfo').append("<div class ='doctor-bio'>" + bio + "</div>");
   }
 }
