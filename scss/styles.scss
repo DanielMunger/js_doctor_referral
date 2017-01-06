@@ -1,6 +1,13 @@
 body {
   background-color: darkgrey;
 }
+#doctor-form {
+  margin-left: 10%;
+  margin-bottom: 50px;
+}
+h2 {
+  margin-left: 10%;
+}
 
 .doctor{
   margin-left: 7%;
@@ -32,4 +39,7 @@ body {
   width: 127px;
   height: 110px;
   margin: 10px;
+}
+.error {
+  margin-left: 7%;
 }
