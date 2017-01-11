@@ -6,24 +6,19 @@ var apiKey = require('./../.env').apiKey;
 
 function Doctor()
 {
-
 }
 
 Doctor.prototype.getAllDoctors = function (symptom, displayFunction) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ symptom +'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=100&user_key=' + apiKey).then(function(result) {
-      //console.log(result.data);
       displayFunction(result.data);
     })
    .fail(function(error){
-
     });
 };
 Doctor.prototype.getSpecialties = function (displayFunction) {
   $.get('https://api.betterdoctor.com/2016-03-01/specialties?user_key=' + apiKey).then(function(result) {
-    console.log(result);
   })
   .fail(function(error){
-
   });
 };
 
@@ -56,23 +51,16 @@ var Doctor = require('./../js/doctors.js').doctorModule;
 
 $(document).ready(function() {
   var newDoctorList = new Doctor();
-  // var specialtyList = new Doctor();
-  // specialtyList.getSpecialties(displaySpecialties);
   $('#doctor-form').submit(function(event) {
     event.preventDefault();
-
     var symptom = $('#symptom').val();
-
     newDoctorList.getAllDoctors(symptom, displayDoctors);
-
-
   });
-
-
 });
 
 var displayDoctors = function(doctors)
 {
+  $(".doctor").remove();
   if(doctors.length !=0)
   {
     for(var i = 0; i<doctors.length; i++)
@@ -84,13 +72,8 @@ var displayDoctors = function(doctors)
       var title = newDoctor.getTitle(doctors[i]);
       var bio = newDoctor.getBio(doctors[i]);
       var image = newDoctor.getPicture(doctors[i]);
-
-      console.log(doctors[i].profile);
-
       $('.doctor:nth-child(' + (i + 1) + ')').append("<img class ='doctor-image' src='"+image+"'>");
-
       $('.doctor:nth-child(' + (i + 1) + ')').append("<div class ='doctorinfo'></div>");
-
       $('.doctor:nth-child(' + (i + 1) + ') .doctorinfo').append("<div class ='doctor-name'>" + "<strong>" + firstName + " " + lastName + ", " + title + "</strong>" + "</div>");
       $('.doctor:nth-child(' + (i + 1) + ') .doctorinfo').append("<div class ='doctor-bio'>" + bio + "</div>");
     }
@@ -99,11 +82,5 @@ var displayDoctors = function(doctors)
     $(".error").text("Sorry, there doesn't seem to be any Doctor's that specialize in that ailment.");
   }
 }
-
-// var displaySpecialties = function(specialties)
-// {
-//
-//   $('#doctor-form').append('<select> ')
-// }
 
 },{"./../js/doctors.js":2}]},{},[3]);
